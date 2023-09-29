@@ -1,12 +1,11 @@
 import React, {useState} from "react";
 import { restaurants } from "../../constants/mock";
 
-import { Menu } from "../../components/Menu/component";
 import { Tabs } from "../../components/Tabs/component";
-import { Reviews } from "../../components/Reviews/component";
+import { Restaurant } from "../../components/Restaurant/component";
 
 export const MainPage = () => {
-  const [activeRest, setActiveRest] = useState(0);
+  const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
 
   if (!restaurants?.length) {
     return null;
@@ -14,13 +13,10 @@ export const MainPage = () => {
 
   return (
     <div>
-      <Tabs arr={restaurants} onChangeActive={(i) => setActiveRest(i)} activeItem={activeRest} />
+      <Tabs arr={restaurants} onChangeActive={(i) => setActiveRestaurantIndex(i)} activeItem={activeRestaurantIndex} />
       <br /><br />
 
-      <h1>{restaurants[activeRest].name}</h1>
-
-      <Menu data={restaurants[activeRest].menu} />
-      <Reviews data={restaurants[activeRest].reviews} />
+      <Restaurant restaurants={restaurants} activeIndex={activeRestaurantIndex} />
     </div>
   );
 };
