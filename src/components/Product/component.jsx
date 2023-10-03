@@ -1,9 +1,10 @@
 import { useState } from "react";
+import classNames from 'classnames';
 import { Button } from "../Button/component";
 
 import styles from './styles.module.scss'
 
-export const Product = ({ name }) => {
+export const Product = ({ name, className }) => {
   const [amount, setAmount] = useState(0);
 
   if (!name) {
@@ -11,7 +12,7 @@ export const Product = ({ name }) => {
   }
 
   return (
-    <div className={styles.product}>
+    <div className={classNames(styles.product, className)}>
       {name}
 
       <div className={styles.controls}>
@@ -22,14 +23,14 @@ export const Product = ({ name }) => {
           title="-"
           onClick={() => setAmount(amount - 1)}
           disabled={amount === 0}
-          className={'left-button'}
+          variant={'left-button'}
         />
         <div className={styles.separator}></div>
         <Button
           title="+"
           onClick={() => setAmount(amount + 1)}
           disabled={amount === 5}
-          className={'right-button'}
+          variant={'right-button'}
         />
       </div>
     </div>

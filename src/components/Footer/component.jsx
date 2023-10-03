@@ -1,8 +1,10 @@
+import classNames from 'classnames';
+
 import styles from './styles.module.scss'
 
-export const Footer = ({  }) => {
+export const Footer = ({ className }) => {
   return (
-    <footer className={styles.footer}>
+    <footer className={classNames(styles.footer, className)}>
         <div className="wrapper">
             &copy;TS
         </div>

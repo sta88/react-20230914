@@ -10,8 +10,8 @@ export const Restaurant = ({restaurants, activeIndex}) => {
         <div>
             <h1 className={styles.title}>{restaurants[activeIndex].name}</h1>
 
-            <Menu data={restaurants[activeIndex].menu} />
-            <Reviews data={restaurants[activeIndex].reviews} />
+            <Menu menu={restaurants[activeIndex].menu} className={styles.menu} />
+            <Reviews reviews={restaurants[activeIndex].reviews} />
         </div>
     );
 };

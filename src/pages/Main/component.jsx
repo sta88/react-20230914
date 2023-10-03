@@ -17,12 +17,12 @@ export const MainPage = () => {
 
   return (
     <div class={styles.container}>
-      <Header />
+      <Header className={styles.header} />
       <div className="wrapper">
-        <Tabs arr={restaurants} onChangeActive={(i) => setActiveRestaurantIndex(i)} activeItem={activeRestaurantIndex} />
+        <Tabs arr={restaurants} className={styles.tabs} onChangeActive={(i) => setActiveRestaurantIndex(i)} activeItem={activeRestaurantIndex} />
         <Restaurant restaurants={restaurants} activeIndex={activeRestaurantIndex} />
       </div>
-      <Footer />
+      <Footer className={styles.footer} />
     </div>
   );
 };
