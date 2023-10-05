@@ -1,6 +1,13 @@
+import { createPortal } from 'react-dom';
+import { useState } from 'react';
+import { Button } from '../Button/component';
+import { Modal } from '../Modal/component';
+
 import styles from './styles.module.scss'
 
 export const Reviews = ({ reviews }) => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div>
       <h3>Reviews</h3>
@@ -12,6 +19,15 @@ export const Reviews = ({ reviews }) => {
           </li>
         ))}
       </ul>
+      <Button
+        title="Add review"
+        onClick={() => setShowModal(true)}
+        className={styles.button}
+      />
+      {showModal && createPortal(
+        <Modal onClose={() => setShowModal(false)} />,
+        document.body
+      )}
     </div>
   );
 };
