@@ -1,13 +1,19 @@
 import { Product } from "../Product/component";
+import classNames from 'classnames';
 
-export const Menu = ({ data }) => {
+import styles from './styles.module.scss'
+
+export const Menu = ({ menu, className }) => {
   return (
-    <ul>
-      {data.map(({ name }) => (
-        <li>
-          <Product name={name} />
-        </li>
-      ))}
-    </ul>
+    <div className={className}>
+      <h3>Menu</h3>
+      <ul>
+        {menu.map(({ id, name }) => (
+          <li key={id}>
+            <Product name={name} className={styles.product}/>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };

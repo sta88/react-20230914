@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
+html, body {
+    font-family: 'PT Sans';
+    font-size: 20px;
+    color: #343434;
+}
+html * {
+    box-sizing: border-box;
+}
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.wrapper {
+    width: 800px;
+    margin: 0 auto;
+}
