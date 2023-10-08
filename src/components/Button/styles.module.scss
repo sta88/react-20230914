@@ -1,8 +1,6 @@
 .button {
     height: 30px;
     min-width: 40px;
-    border: none;
-    background-color: #288afa;
     color: #fff;
     border-radius: 4px;
     padding: 2px 8px;
@@ -12,20 +10,77 @@
         opacity: 0.3;
         pointer-events: none;
     }
-}
+    &.blue {
+        border: 1px solid #288afa;
+        background-color: rgb(40, 138, 250);
 
-.tabs-button {
-    background: none;
-    color: #343434;
+        &:hover {
+            background-color: rgba(40, 138, 250, 0.8);
+        }
+    }
+    &.purple {
+        border: 1px solid rgb(56, 11, 255);
+        background-color: rgb(56, 11, 255);
 
-    &.disabled {
-        background-color: #288afa;
-        opacity: 1;
-        color: #fff;
-        pointer-events: none;
+        &:hover {
+            background-color: rgba(56, 11, 255, 0.8);
+        }
+    }
+
+    &.tabs-button {
+        background: none;
+        color: #343434;
+        border:none;
+
+        &.disabled {
+            opacity: 1;
+            color: #fff;
+            pointer-events: none;
+        }
+        &:hover {
+            background: none;
+            color: #288afa;
+        }
+        &.blue {
+            &.disabled {
+                background-color: #288afa;
+            }
+            &:hover {
+                color: #288afa;
+            }
+        }
+        &.purple {
+            &.disabled {
+                background-color: #380bff;
+            }
+            &:hover {
+                color: #380bff;
+            }
+        }
+    }
+
+    &.cancel {
+        background: none;
+
+        &.blue {
+            color: #288afa;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+        &.purple {
+            color: #380bff;
+
+            &.disabled {
+                background-color: #380bff;
+            }
+            &:hover {
+                color: #fff;
+            }
+        }
     }
 }
-
 .left-button {
     border-radius: 4px 0 0 4px;
 }

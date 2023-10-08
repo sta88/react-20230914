@@ -1,4 +1,5 @@
 import { ReviewsItem } from '../ReviewsItem/component';
+import { AddReview } from '../AddReview/component';
 
 import styles from './styles.module.scss'
 
@@ -13,6 +14,7 @@ export const Reviews = ({ reviews }) => {
           </li>
         ))}
       </ul>
+      <AddReview />
     </div>
   );
 };
