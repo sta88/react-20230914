@@ -25,12 +25,12 @@ const reducer = (state, action) => {
   }
 };
 
-export const ReviewsForm = ({ className, onClose }) => {
+export const ReviewsForm = ({ className, onSubmit }) => {
   const [formValue, dispatch] = useReducer(reducer, DEFAULT_VALUE);
 
-  const closeModal = () => {
+  const resetForm = () => {
     dispatch({type: 'reset'});
-    onClose();
+    onSubmit();
   }
 
   return (
@@ -66,12 +66,12 @@ export const ReviewsForm = ({ className, onClose }) => {
       </div>
       <Button
         title="Cancel"
-        onClick={closeModal}
+        onClick={resetForm}
         variant={'cancel'}
       />
       <Button
         title="Save"
-        onClick={closeModal}
+        onClick={resetForm}
         className={styles.button}
       />
     </div>
