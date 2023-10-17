@@ -10,8 +10,8 @@ import { Footer } from "../../components/Footer/component";
 import styles from './styles.module.scss'
 
 export const MainPage = () => {
-  const [activeRestaurantIndex, setActiveRestaurantIndex] = useState(0);
   const restaurantsIds = useSelector((state) => state.restaurants.ids);
+  const [activeRestaurantId, setActiveRestaurantId] = useState(restaurantsIds[0]);
 
   if (!restaurantsIds?.length) {
     return null;
@@ -19,11 +19,11 @@ export const MainPage = () => {
 
   return (
     <ThemeProvider>
-      <div class={styles.container}>
+      <div className={styles.container}>
         <Header className={styles.header} />
         <div className="wrapper">
-          <Tabs arr={restaurantsIds} className={styles.tabs} onChangeActive={(i) => setActiveRestaurantIndex(i)} activeItem={activeRestaurantIndex} />
-          <Restaurant restaurantsIds={restaurantsIds} activeIndex={activeRestaurantIndex} />
+          <Tabs tabs={restaurantsIds} className={styles.tabs} onChangeActive={(i) => setActiveRestaurantId(i)} activeId={activeRestaurantId} />
+          <Restaurant restaurantId={activeRestaurantId} />
         </div>
         <Footer className={styles.footer} />
       </div>

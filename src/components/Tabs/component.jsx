@@ -1,21 +1,14 @@
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
-import { Button } from "../Button/component";
+import { Tab } from '../Tab/component';
 
 import styles from './styles.module.scss'
 
-export const Tabs = ({ arr, onChangeActive, activeItem, className }) => {
-  const restaurants = useSelector((state) => state.restaurants.entities);
+export const Tabs = ({ tabs, onChangeActive, activeId, className }) => {
 
   return (
     <div className={classNames(className, styles.tabs)}>
-      {arr.map((id, index) => (
-        <Button key={id}
-                title={restaurants[id].name}
-                onClick={() => onChangeActive(index)}
-                disabled={index === activeItem}
-                variant={'tabs-button'}
-        />
+      {tabs.map(id => (
+        <Tab key={id} id={id} activeId={activeId} onClick={() => onChangeActive(id)} />
       ))}
     </div>
   );
