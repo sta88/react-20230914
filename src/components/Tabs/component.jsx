@@ -1,14 +1,18 @@
 import classNames from 'classnames';
-import { Tab } from '../Tab/component';
+import { RestaurantTabContainer } from '../RestaurantTab/container';
 
 import styles from './styles.module.scss'
 
-export const Tabs = ({ tabs, onChangeActive, activeId, className }) => {
-
+export const Tabs = ({ onChangeActive, activeId, className, restaurantIds }) => {
   return (
     <div className={classNames(className, styles.tabs)}>
-      {tabs.map(id => (
-        <Tab key={id} id={id} activeId={activeId} onClick={() => onChangeActive(id)} />
+      {restaurantIds.map(id => (
+        <RestaurantTabContainer
+          key={id}
+          id={id}
+          isActive={id === activeId}
+          onClick={() => onChangeActive(id)}
+          />
       ))}
     </div>
   );

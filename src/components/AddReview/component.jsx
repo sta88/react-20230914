@@ -11,10 +11,10 @@ export const AddReview = ({}) => {
   return (
     <div>
       <Button
-        title="Add review"
         onClick={() => setShowModal(true)}
-        className={styles.button}
-      />
+        className={styles.button}>
+        Add review
+      </Button>
       {showModal && createPortal(
         <ReviewsFormModal onSubmit={() => setShowModal(false)} />,
         document.body

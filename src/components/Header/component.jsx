@@ -13,11 +13,11 @@ export const Header = ({ className }) => {
       <div className="wrapper">
         <h1 className={styles.title}>Restaurants</h1>
         <Button
-          title="Theme"
           onClick={() => setTheme(theme === 'blue' ? 'purple' : 'blue')}
           variant={'theme-button'}
-          className={styles.button}
-        />
+          className={styles.button}>
+          Theme
+        </Button>
       </div>
     </header>
   );

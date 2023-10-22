@@ -1,29 +1,30 @@
-import React, {useState} from "react";
-import { useSelector } from "react-redux";
+import React, {useEffect, useState} from "react";
+import { useDispatch } from "react-redux";
 import { ThemeProvider } from "../../contexts/Theme";
-
-import { Tabs } from "../../components/Tabs/component";
 import { Restaurant } from "../../components/Restaurant/component";
 import { Header } from "../../components/Header/component";
 import { Footer } from "../../components/Footer/component";
+import { getRestaurants } from "../../redux/entities/restaurants/thunks/get-restaurants";
+import { TabsContainer } from "../../components/Tabs/container";
+import { RestaurantContainer } from "../../components/Restaurant/container";
 
 import styles from './styles.module.scss'
 
 export const MainPage = () => {
-  const restaurantsIds = useSelector((state) => state.restaurants.ids);
-  const [activeRestaurantId, setActiveRestaurantId] = useState(restaurantsIds[0]);
+  const [activeRestaurantId, setActiveRestaurantId] = useState();
 
-  if (!restaurantsIds?.length) {
-    return null;
-  }
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getRestaurants());
+  }, []);
 
   return (
     <ThemeProvider>
       <div className={styles.container}>
         <Header className={styles.header} />
         <div className="wrapper">
-          <Tabs tabs={restaurantsIds} className={styles.tabs} onChangeActive={(i) => setActiveRestaurantId(i)} activeId={activeRestaurantId} />
-          <Restaurant restaurantId={activeRestaurantId} />
+          <TabsContainer className={styles.tabs} onChangeActive={setActiveRestaurantId} activeId={activeRestaurantId} />
+          <RestaurantContainer restaurantId={activeRestaurantId} />
         </div>
         <Footer className={styles.footer} />
       </div>

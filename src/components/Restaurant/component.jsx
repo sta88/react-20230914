@@ -1,27 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/entities/restaurants/selectors";
-
-import { Menu } from "../../components/Menu/component";
-import { Reviews } from "../../components/Reviews/component";
+import { ReviewsContainer } from "../Reviews/container";
+import { MenuContainer } from "../Menu/container";
 
 import styles from './styles.module.scss'
 
-export const Restaurant = ({restaurantId}) => {
-    const restaurant = useSelector((state) => selectRestaurantById(state, restaurantId));
-
-    if (!restaurant) {
-      return null;
-    }
-
-    const {name, menu, reviews} = restaurant;
-
+export const Restaurant = ({restaurant}) => {
     return (
         <div>
-            <h1 className={styles.title}>{name}</h1>
+            <h1 className={styles.title}>{restaurant.name}</h1>
 
-            <Menu menu={menu} className={styles.menu} />
-            <Reviews reviewsIds={reviews} />
+            <MenuContainer restaurantId={restaurant.id} className={styles.menu} />
+            <ReviewsContainer restaurantId={restaurant.id} />
         </div>
     );
 };
