@@ -13,14 +13,13 @@ export const ReviewsContainer = ({restaurantId}) => {
   const usersLoadingStatus = useSelector(selectUsersLoadingStatus);
   const restaurantReviewsIds = useSelector(state => selectRestaurantReviewsById(state, restaurantId));
 
-  const dispatchReviews = useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatchReviews(getReviews(restaurantId));
+    dispatch(getReviews(restaurantId));
   }, [restaurantId]);
 
-  const dispatchUsers = useDispatch();
   useEffect(() => {
-    dispatchUsers(getUsers());
+    dispatch(getUsers());
   }, []);
 
   if (reviewsLoadingStatus === REQUEST_STATUS.pending || usersLoadingStatus === REQUEST_STATUS.pending) {
