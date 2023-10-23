@@ -1,16 +1,18 @@
-import { ReviewsItem } from '../ReviewsItem/component';
+import { useSelector } from 'react-redux';
+
+import { Review } from '../Review/component';
 import { AddReview } from '../AddReview/component';
 
 import styles from './styles.module.scss'
 
-export const Reviews = ({ reviews }) => {
+export const Reviews = ({ reviewsIds }) => {
   return (
     <div>
       <h3>Reviews</h3>
       <ul className={styles.reviews}>
-        {reviews.map(({ id, user, text }) => (
+        {reviewsIds.map((id) => (
           <li className={styles.item} key={id}>
-            <ReviewsItem user={user} reviewText={text}/>
+            <Review reviewId={id} />
           </li>
         ))}
       </ul>

@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 
 export const ReviewsFormModal = ({ onSubmit }) => {
   return (
-    <div class={styles.modal}>
+    <div className={styles.modal}>
         <ReviewsForm className={styles.form} onSubmit={onSubmit}/>
     </div>
   );

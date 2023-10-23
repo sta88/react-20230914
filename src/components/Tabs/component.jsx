@@ -1,18 +1,14 @@
 import classNames from 'classnames';
-import { Button } from "../Button/component";
+import { Tab } from '../Tab/component';
 
 import styles from './styles.module.scss'
 
-export const Tabs = ({ arr, onChangeActive, activeItem, className }) => {
+export const Tabs = ({ tabs, onChangeActive, activeId, className }) => {
+
   return (
     <div className={classNames(className, styles.tabs)}>
-      {arr.map(({ id, name }, index) => (
-        <Button key={id}
-                title={name}
-                onClick={() => onChangeActive(index)}
-                disabled={index === activeItem}
-                variant={'tabs-button'}
-        />
+      {tabs.map(id => (
+        <Tab key={id} id={id} activeId={activeId} onClick={() => onChangeActive(id)} />
       ))}
     </div>
   );
