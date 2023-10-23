@@ -1,17 +1,15 @@
-import { Product } from "../Product/component";
-import { useSelector } from "react-redux";
-import classNames from 'classnames';
+import { ProductContainer } from "../Product/container";
 
 import styles from './styles.module.scss'
 
-export const Menu = ({ menu, className }) => {
+export const Menu = ({ dishesIds, className }) => {
   return (
     <div className={className}>
       <h3>Menu</h3>
       <ul>
-        {menu.map((id) => (
+        {dishesIds.map((id) => (
           <li key={id}>
-            <Product dishId={id} className={styles.product}/>
+            <ProductContainer dishId={id} className={styles.product}/>
           </li>
         ))}
       </ul>

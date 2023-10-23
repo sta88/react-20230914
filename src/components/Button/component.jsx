@@ -4,7 +4,7 @@ import { ThemeContext } from '../../contexts/Theme';
 
 import styles from './styles.module.scss'
 
-export const Button = ({ title, onClick, disabled, variant, className }) => {
+export const Button = ({ children, onClick, disabled, variant, className }) => {
   const {theme} = useContext(ThemeContext);
 
   return (
@@ -20,7 +20,7 @@ export const Button = ({ title, onClick, disabled, variant, className }) => {
       onClick={onClick}
       disabled={disabled}
     >
-      {title}
+    {children}
     </button>
   );
 };

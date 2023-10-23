@@ -65,15 +65,15 @@ export const ReviewsForm = ({ className, onSubmit }) => {
           />
       </div>
       <Button
-        title="Cancel"
         onClick={resetForm}
-        variant={'cancel'}
-      />
+        variant={'cancel'}>
+        Cancel
+      </Button>
       <Button
-        title="Save"
         onClick={resetForm}
-        className={styles.button}
-      />
+        className={styles.button}>
+        Save
+      </Button>
     </div>
   );
 };
