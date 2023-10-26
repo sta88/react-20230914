@@ -3,7 +3,7 @@ import { ReviewContainer } from '../Review/container';
 
 import styles from './styles.module.scss'
 
-export const Reviews = ({  reviewsIds }) => {
+export const Reviews = ({  reviewsIds, restaurantId }) => {
   return (
     <div>
       <h3>Reviews</h3>
@@ -14,7 +14,7 @@ export const Reviews = ({  reviewsIds }) => {
           </li>
         ))}
       </ul>
-      <AddReview />
+      <AddReview restaurantId={restaurantId} />
     </div>
   );
 };
