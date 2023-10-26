@@ -1,30 +1,27 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { selectReviewsLoadingStatus } from "../../redux/entities/reviews/selectors";
+import { useSelector } from "react-redux";
 import { getReviews } from "../../redux/entities/reviews/thunks/get-reviews";
 import { getUsers } from "../../redux/entities/users/thunks/get-users";
-import { selectUsersLoadingStatus } from "../../redux/entities/users/selectors";
 import { REQUEST_STATUS } from "../../constants/statuses";
 import { Reviews } from "./component";
 import { selectRestaurantReviewsById } from "../../redux/entities/restaurants/selectors";
+import { useRequest } from "../../hooks/use-request";
+import { useMakeRequest } from "../../hooks/use-make-request";
+import { addReview } from "../../redux/entities/reviews/thunks/add-review";
 
-export const ReviewsContainer = ({restaurantId}) => {
-  const reviewsLoadingStatus = useSelector(selectReviewsLoadingStatus);
-  const usersLoadingStatus = useSelector(selectUsersLoadingStatus);
-  const restaurantReviewsIds = useSelector(state => selectRestaurantReviewsById(state, restaurantId));
+export const ReviewsContainer = ({ restaurantId }) => {
+  const reviewsLoadingStatus = useRequest(getReviews, restaurantId);
+  const usersLoadingStatus = useRequest(getUsers);
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getReviews(restaurantId));
-  }, [restaurantId]);
+  const restaurantReviewsIds = useSelector((state) =>
+    selectRestaurantReviewsById(state, restaurantId)
+  );
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, []);
-
-  if (reviewsLoadingStatus === REQUEST_STATUS.pending || usersLoadingStatus === REQUEST_STATUS.pending) {
+  if (
+    reviewsLoadingStatus === REQUEST_STATUS.pending ||
+    usersLoadingStatus === REQUEST_STATUS.pending
+  ) {
     return <div>Loading...</div>;
   }
 
-  return <Reviews reviewsIds={restaurantReviewsIds} />
+  return <Reviews reviewsIds={restaurantReviewsIds} restaurantId={restaurantId} />;
 };
