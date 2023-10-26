@@ -4,34 +4,7 @@ import { Button } from '../Button/component';
 
 import styles from './styles.module.scss'
 
-// const DEFAULT_VALUE = {
-//   name: '',
-//   review: '',
-//   rating: 0
-// }
-
-// const reducer = (state, action) => {
-//   switch (action.type) {
-//     case 'setName':
-//       return {...state, name: action.payload};
-//     case 'setReview':
-//       return {...state, review: action.payload};
-//     case 'setRating':
-//       return {...state, rating: action.payload};
-//     case 'reset':
-//       return {...DEFAULT_VALUE};
-//     default:
-//       return state;
-//   }
-// };
-
 export const ReviewsForm = ({ className, onSubmit, onReset, formValue, onChange }) => {
-  // const [formValue, dispatch] = useReducer(reducer, DEFAULT_VALUE);
-
-  // const resetForm = () => {
-  //   dispatch({type: 'reset'});
-  //   onSubmit();
-  // }
 
   return (
     <div className={classNames(styles.form, className)}>

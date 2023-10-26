@@ -4,7 +4,6 @@ import { restaurantActions } from "../../restaurants";
 export const addReview = createAsyncThunk(
   "reviews/addReview",
   async ({ restaurantId, newReview }, { dispatch }) => {
-    console.log('restaurantId', restaurantId);
     const response = fetch(`http://localhost:3001/api/review/${restaurantId}`,
       {
         method: "POST",

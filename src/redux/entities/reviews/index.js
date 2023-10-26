@@ -11,14 +11,14 @@ const { reducer } = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(
-        getReviews.fulfilled,
-        (state, { payload }) => {
-          entityAdapter.setMany(state, payload);
-        })
-      .addCase(
         addReview.fulfilled,
         (state, { payload } = {}) => {
           entityAdapter.addOne(state, payload);
+        })
+      .addCase(
+        getReviews.fulfilled,
+        (state, { payload }) => {
+          entityAdapter.setMany(state, payload);
         }),
 });
 
