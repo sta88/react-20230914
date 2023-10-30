@@ -7,6 +7,8 @@ import { RestaurantContainer } from "../../components/Restaurant/container";
 import { useGetRestaurantsQuery } from "../../redux/services/api";
 
 import styles from './styles.module.scss'
+import { Outlet } from "react-router-dom";
+import { TabsLinksContainer } from "../../components/TabsLinks/container";
 
 export const MainPage = () => {
   const [activeRestaurantId, setActiveRestaurantId] = useState();
@@ -37,8 +39,10 @@ export const MainPage = () => {
           {
             isSuccess && activeRestaurantId &&
             <>
-              <TabsContainer className={styles.tabs} onChangeActive={changeActiveRestaurant} activeId={activeRestaurantId}/>
-              <RestaurantContainer restaurant={activeRestaurant} />
+              {/* <TabsContainer className={styles.tabs} onChangeActive={changeActiveRestaurant} activeId={activeRestaurantId}/> */}
+              {/* <RestaurantContainer restaurant={activeRestaurant} /> */}
+              <TabsLinksContainer className={styles.tabs}/>
+              <Outlet />
             </>
           }
         </div>
