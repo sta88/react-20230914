@@ -3,14 +3,14 @@ import { ReviewContainer } from '../Review/container';
 
 import styles from './styles.module.scss'
 
-export const Reviews = ({  reviewsIds, restaurantId }) => {
+export const Reviews = ({ reviews, restaurantId }) => {
   return (
     <div>
       <h3>Reviews</h3>
       <ul className={styles.reviews}>
-        {reviewsIds.map((id) => (
-          <li className={styles.item} key={id}>
-            <ReviewContainer reviewId={id} />
+        {reviews.map((item) => (
+          <li className={styles.item} key={item.id}>
+            <ReviewContainer review={item} />
           </li>
         ))}
       </ul>

@@ -1,17 +1,12 @@
-import { useSelector } from "react-redux";
 import { Menu } from "./component";
-import { REQUEST_STATUS } from "../../constants/statuses";
-import { getDishes } from "../../redux/entities/dishes/thunks/get-dishes";
-import { selectRestaurantMenuById } from "../../redux/entities/restaurants/selectors";
-import { useRequest } from "../../hooks/use-request";
+import { useGetDishesQuery } from "../../redux/services/api";
 
 export const MenuContainer = ({restaurantId, className}) => {
-  const restaurantDishesIds = useSelector(state => selectRestaurantMenuById(state, restaurantId));
-  const dishesLoadingStatus = useRequest(getDishes, restaurantId);
+  const {data: restaurantDishes, isFetching} = useGetDishesQuery(restaurantId);
 
-  if (dishesLoadingStatus === REQUEST_STATUS.pending) {
+  if (isFetching) {
     return <div>Loading...</div>;
   }
 
-  return <Menu dishesIds={restaurantDishesIds} className={className} />;
+  return <Menu dishes={restaurantDishes} className={className} />;
 };

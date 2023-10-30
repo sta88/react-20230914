@@ -3,9 +3,10 @@ import { selectDishById } from "../../redux/entities/dishes/selectors";
 import { Product } from "./component";
 import { selectDishAmountById } from "../../redux/ui/cart/selectors";
 import { cartActions } from "../../redux/ui/cart";
+import { useGetDishQuery } from "../../redux/services/api";
 
 export const ProductContainer = ({ dishId, className }) => {
-    const dish = useSelector((state) => selectDishById(state, dishId));
+    const {data: dish} = useGetDishQuery(dishId);
     const amount = useSelector((state) => selectDishAmountById(state, dishId));
     const dispatch = useDispatch();
 

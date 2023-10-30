@@ -1,11 +1,8 @@
-import classNames from "classnames";
 import { useReducer } from "react";
-import { Button } from "../Button/component";
 import { ReviewsForm } from "./component";
-
-import styles from "./styles.module.scss";
 import { useMakeRequest } from "../../hooks/use-make-request";
 import { addReview } from "../../redux/entities/reviews/thunks/add-review";
+import { useCreateReviewMutation } from "../../redux/services/api";
 
 const DEFAULT_VALUE = {
   userId: "",
@@ -28,13 +25,9 @@ const reducer = (state, action) => {
   }
 };
 
-export const ReviewsFormContainer = ({
-  className,
-  onClose,
-  restaurantId,
-}) => {
+export const ReviewsFormContainer = ({ className, onClose, restaurantId }) => {
   const [formValue, dispatch] = useReducer(reducer, DEFAULT_VALUE);
-  const [creatingReviewStatus, createReview] = useMakeRequest(addReview);
+  const [createReview, {isLoading}] = useCreateReviewMutation();
 
   const resetForm = () => {
     dispatch({ type: "reset" });
