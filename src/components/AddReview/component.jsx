@@ -5,7 +5,7 @@ import { ReviewsFormModal } from '../ReviewsFormModal/component';
 
 import styles from './styles.module.scss'
 
-export const AddReview = ({}) => {
+export const AddReview = ({restaurantId}) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -16,7 +16,7 @@ export const AddReview = ({}) => {
         Add review
       </Button>
       {showModal && createPortal(
-        <ReviewsFormModal onSubmit={() => setShowModal(false)} />,
+        <ReviewsFormModal onClose={() => setShowModal(false)} restaurantId={restaurantId} />,
         document.body
       )}
     </div>

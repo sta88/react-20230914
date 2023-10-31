@@ -3,15 +3,15 @@ import { RestaurantTabContainer } from '../RestaurantTab/container';
 
 import styles from './styles.module.scss'
 
-export const Tabs = ({ onChangeActive, activeId, className, restaurantIds }) => {
+export const Tabs = ({ onChangeActive, activeId, className, tabsData }) => {
   return (
     <div className={classNames(className, styles.tabs)}>
-      {restaurantIds.map(id => (
+      {tabsData.map(item => (
         <RestaurantTabContainer
-          key={id}
-          id={id}
-          isActive={id === activeId}
-          onClick={() => onChangeActive(id)}
+          key={item.id}
+          restaurant={item}
+          isActive={item.id === activeId}
+          onClick={() => onChangeActive(item.id)}
           />
       ))}
     </div>

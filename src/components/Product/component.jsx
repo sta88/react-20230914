@@ -1,12 +1,9 @@
-import { useState } from "react";
 import classNames from 'classnames';
 import { Button } from "../Button/component";
 
 import styles from './styles.module.scss'
 
-export const Product = ({ dish, className }) => {
-  const [amount, setAmount] = useState(0);
-
+export const Product = ({ dish, className, onIncrement, onDecrement, amount }) => {
   return (
     <div className={classNames(styles.product, className)}>
       {dish.name}
@@ -16,15 +13,15 @@ export const Product = ({ dish, className }) => {
           {amount}
         </div>
         <Button
-          onClick={() => setAmount(amount - 1)}
-          disabled={amount === 0}
+          onClick={onDecrement}
+          disabled={amount <= 0}
           variant={'left-button'}>
           -
         </Button>
         <div className={styles.separator}></div>
         <Button
-          onClick={() => setAmount(amount + 1)}
-          disabled={amount === 5}
+          onClick={onIncrement}
+          disabled={amount >= 5}
           variant={'right-button'}>
           +
         </Button>

@@ -1,0 +1,16 @@
+.tabs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.activeTab {
+    pointer-events: none;
+
+    button {
+        opacity: 1;
+        color: #fff !important;
+        pointer-events: none;
+        background-color: #288afa !important;
+    }
+}

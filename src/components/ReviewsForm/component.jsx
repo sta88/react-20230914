@@ -4,34 +4,7 @@ import { Button } from '../Button/component';
 
 import styles from './styles.module.scss'
 
-const DEFAULT_VALUE = {
-  name: '',
-  review: '',
-  rating: 0
-}
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'setName':
-      return {...state, name: action.payload};
-    case 'setReview':
-      return {...state, review: action.payload};
-    case 'setRating':
-      return {...state, rating: action.payload};
-    case 'reset':
-      return {...DEFAULT_VALUE};
-    default:
-      return state;
-  }
-};
-
-export const ReviewsForm = ({ className, onSubmit }) => {
-  const [formValue, dispatch] = useReducer(reducer, DEFAULT_VALUE);
-
-  const resetForm = () => {
-    dispatch({type: 'reset'});
-    onSubmit();
-  }
+export const ReviewsForm = ({ className, onSubmit, onReset, formValue, onChange }) => {
 
   return (
     <div className={classNames(styles.form, className)}>
@@ -42,7 +15,7 @@ export const ReviewsForm = ({ className, onSubmit }) => {
               type="text"
               placeholder="Name"
               value={formValue.name}
-              onChange={(e) => dispatch({type: 'setName', payload: e.target.value})}
+              onChange={(e) => onChange('setName', e.target.value)}
           />
       </div>
       <div className={styles.formRow}>
@@ -50,7 +23,7 @@ export const ReviewsForm = ({ className, onSubmit }) => {
               className={styles.textarea}
               placeholder="..."
               value={formValue.review}
-              onChange={(e) => dispatch({type: 'setReview', payload: e.target.value})}
+              onChange={(e) => onChange('setReview', e.target.value)}
           ></textarea>
       </div>
       <div className={styles.formRow}>
@@ -61,16 +34,16 @@ export const ReviewsForm = ({ className, onSubmit }) => {
               max="5"
               placeholder="0-5"
               value={formValue.rating}
-              onChange={(e) => dispatch({type: 'setRating', payload: e.target.value})}
+              onChange={(e) => onChange('setRating', e.target.value)}
           />
       </div>
       <Button
-        onClick={resetForm}
+        onClick={onReset}
         variant={'cancel'}>
         Cancel
       </Button>
       <Button
-        onClick={resetForm}
+        onClick={onSubmit}
         className={styles.button}>
         Save
       </Button>

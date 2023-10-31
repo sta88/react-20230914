@@ -1,11 +1,11 @@
-import { ReviewsForm } from '../ReviewsForm/component';
+import { ReviewsFormContainer } from '../ReviewsForm/container';
 
 import styles from './styles.module.scss'
 
-export const ReviewsFormModal = ({ onSubmit }) => {
+export const ReviewsFormModal = ({ onClose, restaurantId }) => {
   return (
     <div className={styles.modal}>
-        <ReviewsForm className={styles.form} onSubmit={onSubmit}/>
+        <ReviewsFormContainer className={styles.form} onClose={onClose} restaurantId={restaurantId}/>
     </div>
   );
 };
