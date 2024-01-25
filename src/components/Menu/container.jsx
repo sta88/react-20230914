@@ -21,3 +21,5 @@ export const MenuContainer = ({restaurantId, className}) => {
 
   return <Menu dishesIds={restaurantDishesIds} className={className} />;
 };
+
+// Test commit
