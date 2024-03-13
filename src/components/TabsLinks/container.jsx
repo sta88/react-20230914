@@ -1,12 +1,12 @@
 import { useGetRestaurantsQuery } from '../../redux/services/api';
-import { Tabs } from './component';
+import { TabsLinks } from './component';
 
-export const TabsContainer = (props) => {
+export const TabsLinksContainer = (props) => {
   const {data: restaurants} = useGetRestaurantsQuery();
 
   if (!restaurants) {
     return null;
   }
 
-  return <Tabs {...props} tabsData={restaurants}/>;
+  return <TabsLinks {...props} tabsData={restaurants}/>;
 };
